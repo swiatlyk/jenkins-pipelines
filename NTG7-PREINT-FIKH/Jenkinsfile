@@ -6,17 +6,17 @@ pipeline {
 
   }
   stages {
-    stage('Stage 1') {
+    stage('Stage 1 NTG7-F1KH') {
       parallel {
-        stage('Checkout Stage 1') {
+        stage('Checkout Stage 1 NTG7-F1KH') {
           steps {
             echo 'Checking out Stage 1'
           }
         }
 
-        stage('Checkout Stage 2') {
+        stage('Checkout Stage 2 NTG7-F1KH') {
           steps {
-            echo 'Checkout Stage 2'
+            echo 'Checkout Stage NTG7-F1KH'
           }
         }
 
