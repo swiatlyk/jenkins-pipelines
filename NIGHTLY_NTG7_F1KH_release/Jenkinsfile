@@ -14,7 +14,7 @@ pipeline {
           }
         }
 
-        stage('Checkout Stage RELEASE') {
+        stage('Checkout Stage 2 RELEASE') {
           steps {
             echo 'Checkout Stage RELEASE'
           }
