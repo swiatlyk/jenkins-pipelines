@@ -6,7 +6,7 @@ pipeline {
 
   }
   stages {
-    stage('Stage 1') {
+    stage('Stage 1 STAR2') {
       parallel {
         stage('Checkout Smoke Files') {
           steps {
@@ -23,7 +23,7 @@ pipeline {
       }
     }
 
-    stage('Start tests') {
+    stage('Start tests STAR2') {
       agent any
       steps {
         echo 'Starting testin'
