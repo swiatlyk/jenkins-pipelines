@@ -6,17 +6,17 @@ pipeline {
 
   }
   stages {
-    stage('Stage 1 STAR2') {
+    stage('Stage 1') {
       parallel {
-        stage('Checkout Smoke Files') {
+        stage('Checkout Stage 1') {
           steps {
-            echo 'Checking out SMokefiles repo'
+            echo 'Checking out Stage 1'
           }
         }
 
-        stage('Checkout vcpu repo') {
+        stage('Checkout Stage 2') {
           steps {
-            echo 'Checkout vcpu repo'
+            echo 'Checkout Stage 2'
           }
         }
 
