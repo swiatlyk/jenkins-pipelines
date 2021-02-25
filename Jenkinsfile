@@ -24,6 +24,7 @@ pipeline {
     }
 
     stage('Start tests') {
+      agent any
       steps {
         echo 'Starting testin'
       }
