@@ -23,7 +23,7 @@ pipeline {
       }
     }
 
-    stage('Start tests STAR2') {
+    stage('Start tests NTG7-F1KH') {
       agent any
       steps {
         echo 'Starting testin'
