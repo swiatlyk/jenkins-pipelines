@@ -27,6 +27,7 @@ pipeline {
       agent any
       steps {
         echo 'Starting testin'
+        sleep 2
       }
     }
 
