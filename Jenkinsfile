@@ -84,9 +84,9 @@ pipeline {
     }
 
   }
-  post { 
-    always { 
-    echo 'I will always run regardless of the completion status of the Pipeline’s or stage’s run.'
-    }
-  }
+  // post { 
+  //   always { 
+  //   echo 'I will always run regardless of the completion status of the Pipeline’s or stage’s run.'
+  //   }
+  // }
 }
