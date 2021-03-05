@@ -1,11 +1,12 @@
+def gv
 pipeline {
   agent {
     node {
       label 'master'
       //customWorkspace '/some/other/path'
-      //adding new environment variables
     }
   }
+  //adding new environment variables
   environment {
     NEW_VERSION = '1.20.0'
 }
@@ -21,11 +22,22 @@ pipeline {
         password(name: 'PASSWORD', defaultValue: 'SECRET', description: 'Enter a password')
 	}
   stages {
+    stage("init") {
+      steps {
+        script {
+          gv = load "script.groovy"
+        }
+      }
+    }
     stage('Checkout_smokefiles') {
       steps {
         //timeout(unit: 'SECONDS', time: 5)
-        echo 'Checking out SMoke Files'
+        echo 'Checking out Smoke Files'
         echo "building version ${NEW_VERSION}"
+        echo "====++++Try to load groovy script++++===="
+        script {
+          gv.buildApp()
+        }
       }
     }
 
