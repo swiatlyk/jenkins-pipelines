@@ -3,9 +3,12 @@ pipeline {
     node {
       label 'master'
       //customWorkspace '/some/other/path'
+      //adding new environment variables
     }
-
   }
+  environment {
+    NEW_VERSION = '1.20.0'
+}
   parameters {
         string(name: 'NAME', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
 
@@ -22,6 +25,7 @@ pipeline {
       steps {
         //timeout(unit: 'SECONDS', time: 5)
         echo 'Checking out SMoke Files'
+        echo "building version ${NEW_VERSION}"
       }
     }
 
@@ -87,6 +91,12 @@ pipeline {
   post { 
     always { 
     echo 'I will always run regardless of the completion status of the Pipeline’s or stage’s run.'
+    }
+    failure {
+      echo 'I will when job will failure'
+    }
+    success {
+      echo 'I will run when job is success'
     }
   }
 }
