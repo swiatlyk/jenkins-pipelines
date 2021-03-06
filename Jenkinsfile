@@ -1,4 +1,7 @@
+//initiatiing groovy script, name can be any
 def gv
+
+//defining whole pipeline
 pipeline {
   agent {
     node {
@@ -6,22 +9,24 @@ pipeline {
       //customWorkspace '/some/other/path'
     }
   }
-  //adding new environment variables
+  //adding/editing environment variables
   environment {
     NEW_VERSION = '1.20.0'
 }
+  //adding/editing environment variables
   parameters {
-        string(name: 'NAME', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
+        //string(name: 'NAME', defaultValue: 'Mr Jenkins', description: 'Who should I say hello to?')
 
-        text(name: 'BIOGRAPHY', defaultValue: '', description: 'Enter some information about the person')
+        //text(name: 'BIOGRAPHY', defaultValue: '', description: 'Enter some information about the person')
 
-        booleanParam(name: 'TOGGLE', defaultValue: true, description: 'Toggle this value')
+        booleanParam(name: 'RSU present', defaultValue: true, description: 'Is RSU present on bench')
 
-        choice(name: 'CHOICE', choices: ['One', 'Two', 'Three'], description: 'Pick something')
+        choice(name: 'Version to build', choices: ['1.20', '1.30', '1.40'], description: 'Pick version')
 
-        password(name: 'PASSWORD', defaultValue: 'SECRET', description: 'Enter a password')
+        //password(name: 'PASSWORD', defaultValue: 'SECRET', description: 'Enter a password')
 	}
   stages {
+    
     stage("init") {
       steps {
         script {
@@ -32,8 +37,7 @@ pipeline {
     stage('Checkout_smokefiles') {
       steps {
         //timeout(unit: 'SECONDS', time: 5)
-        echo 'Checking out Smoke Files'
-        echo "building version ${NEW_VERSION}"
+        echo "Checking out Smoke version ${NEW_VERSION}"
         echo "====++++Try to load groovy script++++===="
         script {
           gv.buildApp()
