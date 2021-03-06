@@ -1,4 +1,4 @@
-//initiatiing groovy script, name can be any
+//initiating groovy script, name can be any
 def gv
 
 //defining whole pipeline
@@ -26,7 +26,7 @@ pipeline {
         //password(name: 'PASSWORD', defaultValue: 'SECRET', description: 'Enter a password')
 	}
   stages {
-    //Mandatory stage to load scritp
+    //Mandatory stage to load script
     stage("init") {
       steps {
         script {
