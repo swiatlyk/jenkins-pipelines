@@ -34,10 +34,10 @@ pipeline {
         }
       }
     }
-    stage('Checkout_smokefiles') {
+    stage('Checkout_app repository') {
       steps {
         //timeout(unit: 'SECONDS', time: 5)
-        echo "Checking out Smoke version ${NEW_VERSION}"
+        echo "Checking out app version ${NEW_VERSION}"
         echo "====++++Try to load groovy script++++===="
         //using script by method in script
         script {
@@ -46,23 +46,23 @@ pipeline {
       }
     }
 
-    stage('Run_vcpuupdate_and_smoketests') {
+    stage('Run_deploy application') {
       parallel {
-        stage('Run_vcpuupdate_and_smoketests') {
+        stage('Deploying application') {
           steps {
-            echo 'Starting flashing and testing'
+            echo 'Starting deploying app'
+            script {
+              gv.deployApp()
+            }
           }
         }
 
-        stage('run_vcpuupdate') {
+        stage('Copy files') {
           steps {
-            echo 'Flashing vcpu'
-          }
-        }
-
-        stage('run_smoketests') {
-          steps {
-            echo 'Starting SmokeTests.exe'
+            echo 'Copying files of app'
+            script {
+              gv.copyFilesToProd()
+            }
           }
         }
 
