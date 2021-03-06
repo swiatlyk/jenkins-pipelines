@@ -26,7 +26,7 @@ pipeline {
         //password(name: 'PASSWORD', defaultValue: 'SECRET', description: 'Enter a password')
 	}
   stages {
-    
+    //Mandatory stage to load scritp
     stage("init") {
       steps {
         script {
@@ -39,38 +39,10 @@ pipeline {
         //timeout(unit: 'SECONDS', time: 5)
         echo "Checking out Smoke version ${NEW_VERSION}"
         echo "====++++Try to load groovy script++++===="
+        //using script by method in script
         script {
           gv.buildApp()
         }
-      }
-    }
-
-    stage('Copy_smokefiles') {
-      agent any
-      steps {
-        // timeout(unit: 'SECONDS', time: 5)
-        echo 'Copy Smoke Files'
-      }
-    }
-
-    stage('Check_SmokeTests_list_parameters') {
-      steps {
-        // timeout(unit: 'SECONDS', time: 5)
-        echo 'SmokeTests.exe --listparameters'
-      }
-    }
-
-    stage('Checkout_TTCL') {
-      steps {
-        // timeout(unit: 'SECONDS', time: 5)
-        echo 'Checking out TTCL'
-      }
-    }
-
-    stage('Checkout_vcpu_source_NTG7') {
-      steps {
-        // timeout(unit: 'SECONDS', time: 5)
-        echo 'Checkout VCPU source'
       }
     }
 
