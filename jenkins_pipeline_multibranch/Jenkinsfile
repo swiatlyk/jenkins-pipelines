@@ -16,22 +16,11 @@ pipeline {
     }
 
     stage('Checkout_app repository') {
-      parallel {
-        stage('Checkout_app repository') {
-          steps {
-            echo "Checking out app version ${NEW_VERSION}"
-            echo '====++++Try to load groovy script++++===='
-            script {
-              gv.buildApp()
-            }
-
-          }
-        }
-
-        stage('') {
-          steps {
-            sleep 5
-          }
+      steps {
+        echo "Checking out app version ${NEW_VERSION}"
+        echo '====++++Try to load groovy script++++===='
+        script {
+          gv.buildApp()
         }
 
       }
