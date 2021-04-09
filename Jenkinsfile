@@ -21,7 +21,7 @@ pipeline {
 
         booleanParam(name: 'RSU present', defaultValue: true, description: 'Is RSU present on bench')
 
-        choice(name: 'Version to build', choices: ['1.20', '1.30', '1.40'], description: 'Pick version')
+        choice(name: 'Version_to_build', choices: ['1.20', '1.30', '1.40'], description: 'Pick version')
 
         //password(name: 'PASSWORD', defaultValue: 'SECRET', description: 'Enter a password')
 	}
@@ -37,7 +37,8 @@ pipeline {
     stage('Checkout_app repository') {
       steps {
         //timeout(unit: 'SECONDS', time: 5)
-        echo "Checking out app version ${NEW_VERSION}"
+        // echo "Checking out app version ${NEW_VERSION}"
+        echo "Checking out app version ${env.Version_to_build}"
         echo "====++++Try to load groovy script++++===="
         //using script by method in script
         script {
