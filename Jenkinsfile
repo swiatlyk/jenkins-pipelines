@@ -36,7 +36,6 @@ pipeline {
     }
     stage('Checkout_app repository') {
       steps {
-        //timeout(unit: 'SECONDS', time: 5)
         // echo "Checking out app version ${NEW_VERSION}"
         echo "Checking out app version ${env.Version_to_build}"
         echo "====++++Try to load groovy script++++===="
