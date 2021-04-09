@@ -21,7 +21,7 @@ pipeline {
 
         booleanParam(name: 'RSU present', defaultValue: true, description: 'Is RSU present on bench')
 
-        choice(name: 'Version_to_build', choices: ['1.20', '1.30', '1.40'], description: 'Pick version')
+        choice(name: 'Version_to_build', choices: ["1.20", "1.30", "1.40"], description: 'Pick version')
 
         //password(name: 'PASSWORD', defaultValue: 'SECRET', description: 'Enter a password')
 	}
